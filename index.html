@@ -23,7 +23,7 @@
 
             if (playerSelection === computerSelection)
             {
-                console.log("It's tie! " + playerSelection + " ties with " + computerSelection)
+                console.log("It's tie! " + playerSelection + " ties with " + computerSelection);
                 return tie;
             }
             else if (playerSelection === "Rock")
@@ -90,7 +90,7 @@
 
             for (let round = 0; round < 5; round++)
             {
-                const playerSelection = prompt("Please enter Rock, Paper or Scissors")
+                const playerSelection = prompt("Please enter Rock, Paper or Scissors");
 
                 if (playerSelection === null)
                 {
@@ -100,11 +100,11 @@
 
                 if (playerSelection === "")
                 {
-                    alert("Please enter Rock, Paper or Scissors")
+                    alert("Please enter Rock, Paper or Scissors");
                 }
                 else
                 {
-                    const result = playRound( playerSelection, getComputerChoice() )
+                    const result = playRound( playerSelection, getComputerChoice() );
 
                     if ( result === "Tie"){}
                     else if (result)
