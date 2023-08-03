@@ -67,6 +67,22 @@
             }
         }
 
+        function showEndResult(playerWin, computerWin)
+        {
+            if (playerWin > computerWin)
+            {
+                console.log("You Won!");
+            }
+            else if (computerWin > playerWin)
+            {
+                console.log("You Lost...");
+            }
+            else
+            {
+                console.log("It's tie.");
+            }
+        }
+
         function game()
         {
             let playerWin = 0;
@@ -104,18 +120,7 @@
                 console.log("Player: " + playerWin + " Computer: " + computerWin);
             }
 
-            if (playerWin > computerWin)
-            {
-                console.log("You Won!");
-            }
-            else if (computerWin > playerWin)
-            {
-                console.log("You Lost...");
-            }
-            else
-            {
-                console.log("It's tie.");
-            }
+            showEndResult(playerWin, computerWin);
         }
 
         game();
