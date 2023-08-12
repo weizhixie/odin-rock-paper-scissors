@@ -32,7 +32,7 @@
                 console.log("You Lose! Paper beats Rock");
                 return playerWin = false;
             }
-            else
+            else if (playerSelection === "Rock" && computerSelection === "Scissors")
             {
                 console.log("You Won! Rock beats Scissors");
                 return playerWin = true;
@@ -44,7 +44,7 @@
                 console.log("You Won! Paper beats Rock");
                 return playerWin = true;
             }
-            else
+            else if (playerSelection === "Paper" && computerSelection === "Scissors")
             {
                 console.log("You Lose! Scissors beats Paper");
                 return playerWin = false;
@@ -56,7 +56,7 @@
                 console.log("You Lose! Rock beats Scissors");
                 return playerWin = false;
             }
-            else 
+            else if (playerSelection === "Scissors" && computerSelection === "Paper")
             {
                 console.log("You Won! Scissors beats Paper");
                 return playerWin = true;
