@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
 </head>
+
 <body>
     <section class="buttons">
         <button class="options" value="Rock">Rock</button>
@@ -14,89 +16,76 @@
 
     <section>
         <p class="result"></p>
+        <p class="player-result">Player: 0</p>
+        <p class="computer-result">Computer: 0</p>
+        <p class="end-result"></p>
     </section>
 
     <script>
         const userSelections = document.querySelectorAll(".options");
         const singleRoundResult = document.querySelector(".result");
+        const playerResult = document.querySelector(".player-result");
+        const computerResult = document.querySelector(".computer-result");
+        const endResult = document.querySelector(".end-result");
 
-        function getComputerChoice()
-        {
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function getComputerChoice() {
             const options = ["Rock", "Paper", "Scissors"];
             const computerChoice = options[Math.floor(Math.random() * options.length)];
 
-            return(computerChoice);
+            return computerChoice;
         }
 
-        function playRound(playerSelection, computerSelection)
-        {
-            playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-            let playerWin = false;
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection === computerSelection) {
+                singleRoundResult.textContent = `It's tie! ${playerSelection}  ties with ${computerSelection}`;
+            }
+            else if (playerSelection === "Rock" && computerSelection === "Paper" ||
+                playerSelection === "Paper" && computerSelection === "Scissors" ||
+                playerSelection === "Scissors" && computerSelection === "Rock") {
 
-            if (playerSelection === computerSelection)
-            {
-                singleRoundResult.textContent = "It's tie! " + playerSelection + " ties with " + computerSelection;
-                return "Tie";
+                singleRoundResult.textContent = `You Lose! ${computerSelection} beats ${playerSelection}`;
+                computerScore += 1;
+            }
+            else if (playerSelection === "Rock" && computerSelection === "Scissors" ||
+                playerSelection === "Paper" && computerSelection === "Rock" ||
+                playerSelection === "Scissors" && computerSelection === "Paper") {
+
+                singleRoundResult.textContent = `You Won! ${playerSelection} beats ${computerSelection}`;
+                playerScore += 1;
             }
 
-            
-            if (playerSelection === "Rock" && computerSelection === "Paper")
-            {
-                singleRoundResult.textContent = "You Lose! Paper beats Rock";
-                return playerWin = false;
-            }
-            else if (playerSelection === "Rock" && computerSelection === "Scissors")
-            {
-                singleRoundResult.textContent = "You Won! Rock beats Scissors";
-                return playerWin = true;
-            }
+            playerResult.textContent = "Player: " + playerScore;
+            computerResult.textContent = "Computer: " + computerScore;
 
+            showEndResult(playerScore, computerScore);
+        }
 
-            if (playerSelection === "Paper" && computerSelection === "Rock")
-            {
-                singleRoundResult.textContent = "You Won! Paper beats Rock";
-                return playerWin = true;
+        function showEndResult(playerScore, computerScore) {
+            if (playerScore == 5) {
+                endResult.textContent = "You Won!";
+                disableButtons();
             }
-            else if (playerSelection === "Paper" && computerSelection === "Scissors")
-            {
-                singleRoundResult.textContent = "You Lose! Scissors beats Paper";
-                return playerWin = false;
-            }
-
-
-            if (playerSelection === "Scissors" && computerSelection === "Rock")
-            {
-                singleRoundResult.textContent = "You Lose! Rock beats Scissors";
-                return playerWin = false;
-            }
-            else if (playerSelection === "Scissors" && computerSelection === "Paper")
-            {
-                singleRoundResult.textContent = "You Won! Scissors beats Paper";
-                return playerWin = true;
+            else if (computerScore == 5) {
+                endResult.textContent = "You Lost...";
+                disableButtons();
             }
         }
 
-        function showEndResult(playerWin, computerWin)
-        {
-            if (playerWin > computerWin)
-            {
-                console.log("You Won!");
-            }
-            else if (computerWin > playerWin)
-            {
-                console.log("You Lost...");
-            }
-            else
-            {
-                console.log("It's tie.");
-            }
+        function disableButtons() {
+            userSelections.forEach((userSelection) => {
+                userSelection.disabled = true;
+            });
         }
 
         userSelections.forEach((userSelection) => {
             userSelection.addEventListener("click", (e) => {
                 playRound(e.target.value, getComputerChoice());
-            })
+            });
         });
     </script>
 </body>
+
 </html>
