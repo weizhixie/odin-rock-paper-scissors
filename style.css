@@ -5,6 +5,7 @@
 }
 
 body {
+    height: 100vh;
     display: flex;
     font-size: 26px;
     flex-direction: column;
@@ -12,7 +13,8 @@ body {
     gap: 20px;
 }
 
-.options, .start-again {
+.options,
+.start-again {
     font-size: 20px;
     margin-right: 12px;
     padding: 12px;
@@ -25,4 +27,18 @@ body {
 
 .start-again {
     display: none;
+}
+
+footer {
+    background-color: #1f2937;
+    color: #e5e7eb;
+    width: 100vw;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
 }
