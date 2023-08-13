@@ -3,6 +3,7 @@ const singleRoundResult = document.querySelector(".result");
 const playerResult = document.querySelector(".player-result");
 const computerResult = document.querySelector(".computer-result");
 const endResult = document.querySelector(".end-result");
+const startAgain = document.querySelector(".start-again");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -42,17 +43,34 @@ function playRound(playerSelection, computerSelection) {
 function showEndResult(playerScore, computerScore) {
     if (playerScore == 5) {
         endResult.textContent = "You Won!";
-        disableButtons();
+        disableSelectionBtn();
     }
     else if (computerScore == 5) {
         endResult.textContent = "You Lost...";
-        disableButtons();
+        disableSelectionBtn();
     }
 }
 
-function disableButtons() {
+function disableSelectionBtn() {
     userSelections.forEach((userSelection) => {
         userSelection.disabled = true;
+    });
+    resetGame();
+}
+
+function resetGame() {
+    startAgain.setAttribute("style", "display: block");
+    startAgain.addEventListener("click", () => {
+        playerScore = 0;
+        computerScore = 0;
+        playerResult.textContent = "Player: " + playerScore;
+        computerResult.textContent = "Computer: " + computerScore;
+        singleRoundResult.textContent = "";
+        endResult.textContent = "";
+        userSelections.forEach((userSelection) => {
+            userSelection.disabled = false;
+        });
+        startAgain.setAttribute("style", "display: none");
     });
 }
 

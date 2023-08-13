@@ -22,3 +22,7 @@ body {
     display: flex;
     gap: 12px;
 }
+
+.start-again {
+    display: none;
+}
