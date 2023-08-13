@@ -12,8 +12,13 @@
         <button class="options" value="Scissors">Scissors</button>
     </section>
 
+    <section>
+        <p class="result"></p>
+    </section>
+
     <script>
         const userSelections = document.querySelectorAll(".options");
+        const singleRoundResult = document.querySelector(".result");
 
         function getComputerChoice()
         {
@@ -30,43 +35,43 @@
 
             if (playerSelection === computerSelection)
             {
-                console.log("It's tie! " + playerSelection + " ties with " + computerSelection);
+                singleRoundResult.textContent = "It's tie! " + playerSelection + " ties with " + computerSelection;
                 return "Tie";
             }
 
             
             if (playerSelection === "Rock" && computerSelection === "Paper")
             {
-                console.log("You Lose! Paper beats Rock");
+                singleRoundResult.textContent = "You Lose! Paper beats Rock";
                 return playerWin = false;
             }
             else if (playerSelection === "Rock" && computerSelection === "Scissors")
             {
-                console.log("You Won! Rock beats Scissors");
+                singleRoundResult.textContent = "You Won! Rock beats Scissors";
                 return playerWin = true;
             }
 
 
             if (playerSelection === "Paper" && computerSelection === "Rock")
             {
-                console.log("You Won! Paper beats Rock");
+                singleRoundResult.textContent = "You Won! Paper beats Rock";
                 return playerWin = true;
             }
             else if (playerSelection === "Paper" && computerSelection === "Scissors")
             {
-                console.log("You Lose! Scissors beats Paper");
+                singleRoundResult.textContent = "You Lose! Scissors beats Paper";
                 return playerWin = false;
             }
 
 
             if (playerSelection === "Scissors" && computerSelection === "Rock")
             {
-                console.log("You Lose! Rock beats Scissors");
+                singleRoundResult.textContent = "You Lose! Rock beats Scissors";
                 return playerWin = false;
             }
             else if (playerSelection === "Scissors" && computerSelection === "Paper")
             {
-                console.log("You Won! Scissors beats Paper");
+                singleRoundResult.textContent = "You Won! Scissors beats Paper";
                 return playerWin = true;
             }
         }
