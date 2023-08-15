@@ -39,11 +39,12 @@
     </section>
 
     <footer>
-        <p class="copyright">Copyright &copy; W.Xie
+        <div class="copyright">Copyright &copy; W.Xie
+            <span class="current-year"></span>
             <script>
-                document.write(new Date().getFullYear())
+                document.querySelector(".current-year").textContent = new Date().getFullYear();
             </script>
-        </p>
+        </div>
         <a href="https://github.com/weizhixie" target="_blank">
             &nbsp;<img height="30" width="30" src="images/github-mark-white.png" />
         </a>
